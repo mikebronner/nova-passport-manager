@@ -17,7 +17,7 @@ class Service extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'nova-passport-manager');
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'nova-passport-manager');
 
         $this->app->booted(function () {
             $this->routes();
@@ -41,7 +41,7 @@ class Service extends ServiceProvider
 
         Route::middleware(['nova', Authorize::class])
                 ->prefix('nova-vendor/nova-passport-manager')
-                ->group(__DIR__.'/../routes/api.php');
+                ->group(__DIR__.'/../../routes/api.php');
     }
 
     /**
