@@ -1,0 +1,39 @@
+{
+    "name": "genealabs/nova-passport-manager",
+    "description": "A Laravel Nova tool.",
+    "keywords": [
+        "laravel",
+        "nova"
+    ],
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "5.8.*",
+        "laravel/nova": "2.*",
+        "laravel/passport": "7.*",
+        "php": ">=7.1.0",
+        "symfony/thanks": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Genealabs\\NovaPassportManager\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Genealabs\\NovaPassportManager\\Providers\\Service"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
