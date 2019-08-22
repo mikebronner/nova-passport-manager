@@ -25,3 +25,4 @@ Manage Laravel Passport clients and tokens.
 ## Usage
 ### Nova Tools
 #### Passport Management
+<img width="1633" alt="Screen Shot 2019-08-22 at 4 55 38 PM" src="https://user-images.githubusercontent.com/1791050/63557564-171ca000-c4fe-11e9-99af-d0b07342c310.png">
