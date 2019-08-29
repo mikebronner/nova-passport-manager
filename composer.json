@@ -13,10 +13,9 @@
         }
     ],
     "require": {
-        "laravel/framework": "5.8.*",
+        "laravel/framework": "5.8 - 6.0",
         "laravel/nova": "2.*",
-        "laravel/passport": "7.*",
-        "php": ">=7.1.0",
+        "laravel/passport": "*",
         "symfony/thanks": "*"
     },
     "autoload": {
