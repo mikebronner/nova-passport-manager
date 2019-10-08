@@ -13,10 +13,10 @@
         }
     ],
     "require": {
-        "laravel/framework": "5.8 - 6.0",
-        "laravel/nova": "2.*",
-        "laravel/passport": "*",
-        "symfony/thanks": "*"
+        "laravel/framework": "^5.8|^6.2",
+        "laravel/nova": "*",
+        "laravel/passport": "^7.0",
+        "symfony/thanks": "^1.0"
     },
     "autoload": {
         "psr-4": {
