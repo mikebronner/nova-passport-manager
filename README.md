@@ -1,6 +1,8 @@
 # Nova Passport Manager
 Manage Laravel Passport clients and tokens.
 
+![Passport Manager for Laravel Nova](https://repository-images.githubusercontent.com/203880869/b804a000-f1bb-11e9-8a5b-0772a8937d34)
+
 ## Requirements
 - PHP >= 7.1.3
 - Laravel 5.8.* (https://laravel.com)
