@@ -15,7 +15,7 @@
     "require": {
         "laravel/framework": "^5.8|^6.2",
         "laravel/nova": "*",
-        "laravel/passport": "^7.0",
+        "laravel/passport": "^7.0|^8.0",
         "symfony/thanks": "^1.0"
     },
     "autoload": {
