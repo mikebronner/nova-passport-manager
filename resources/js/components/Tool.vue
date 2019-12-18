@@ -153,7 +153,9 @@
                         '/oauth/personal-access-tokens',
                         {
                             name: this.tokenName,
-                            scopes: this.selectedScopes,
+                            scopes: this.selectedScopes.map((scope) => {
+                                return scope.id;
+                            }),
                         }
                     )
                     .then(response => {
