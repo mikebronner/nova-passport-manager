@@ -32,9 +32,6 @@
             this.getScopes();
         },
 
-        computed: {
-        },
-
         methods: {
             clearAccessToken: function () {
                 this.accessToken = "";
@@ -153,9 +150,10 @@
                         '/oauth/personal-access-tokens',
                         {
                             name: this.tokenName,
-                            scopes: this.selectedScopes.map((scope) => {
-                                return scope.id;
-                            }),
+                            scopes: this.selectedScopes,
+                            // scopes: this.selectedScopes.map((scope) => {
+                            //     return scope.id;
+                            // }),
                         }
                     )
                     .then(response => {
@@ -192,8 +190,8 @@
             class="card mt-3"
         >
             <p
-                class="p-6 text-center text-gray-500"
                 v-show="authorizedTokens.length === 0"
+                class="p-6 text-center text-gray-500"
             >
                 No OAuth Clients have connected yet.
             </p>
@@ -202,7 +200,12 @@
                 class="relative"
             >
                 <div class="overflow-hidden overflow-x-auto relative rounded-lg">
-                    <table cellpadding="0" cellspacing="0" data-testid="resource-table" class="table w-full">
+                    <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        data-testid="resource-table"
+                        class="table w-full"
+                    >
                         <thead>
                             <tr>
                                 <th class="w-16 text-center">ID</th>
@@ -216,9 +219,33 @@
                                 v-for="token in authorizedTokens"
                                 :key="token.id + '-' + token.client.name"
                             >
-                                <td><span class="whitespace-no-wrap text-left" via-resource="" via-resource-id="">{{ token.id }}</span></td>
-                                <td><span class="whitespace-no-wrap text-left" via-resource="" via-resource-id="">{{ token.client.name }}</span></td>
-                                <td><span class="whitespace-no-wrap text-left" via-resource="" via-resource-id="">{{ token.scopes.join(', ') }}</span></td>
+                                <td>
+                                    <span
+                                        class="whitespace-no-wrap text-left"
+                                        via-resource=""
+                                        via-resource-id=""
+                                    >
+                                        {{ token.id }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span
+                                        class="whitespace-no-wrap text-left"
+                                        via-resource=""
+                                        via-resource-id=""
+                                    >
+                                        {{ token.client.name }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span
+                                        class="whitespace-no-wrap text-left"
+                                        via-resource=""
+                                        via-resource-id=""
+                                    >
+                                        {{ token.scopes.join(', ') }}
+                                    </span>
+                                </td>
                                 <td>
                                     <a
                                         class="action-link text-danger"
@@ -248,16 +275,24 @@
         <div class="card mt-3">
             <div class="flex border-b border-40">
                 <div class="w-1/5 py-6 px-8">
-                    <label for="create-client-name" class="inline-block text-80 pt-2 leading-tight">Name</label>
+                    <label
+                        for="create-client-name"
+                        class="inline-block text-80 pt-2 leading-tight"
+                    >
+                        Name
+                    </label>
                 </div>
                 <div class="py-6 px-8 w-1/2">
-                    <input type="hidden" v-model="clientId">
                     <input
+                        v-model="clientId"
+                        type="hidden"
+                    >
+                    <input
+                        :class="{'border-danger': clientFieldHasError('name')}"
                         v-model="clientName"
                         type="text"
                         placeholder="Name"
                         class="w-full form-control form-input form-input-bordered"
-                        :class="{'border-danger': clientFieldHasError('name')}"
                     >
                     <div
                         v-show="clientFieldHasError('name')"
@@ -271,15 +306,20 @@
             </div>
             <div class="flex border-b border-40">
                 <div class="w-1/5 py-6 px-8">
-                    <label for="create-redirect-url" class="inline-block text-80 pt-2 leading-tight">Redirect URL</label>
+                    <label
+                        for="create-redirect-url"
+                        class="inline-block text-80 pt-2 leading-tight"
+                    >
+                        Redirect URL
+                    </label>
                 </div>
                 <div class="py-6 px-8 w-1/2">
                     <input
+                        :class="{'border-danger': clientFieldHasError('redirect')}"
                         v-model="redirectUrl"
                         type="text"
                         placeholder="Redirect URL"
                         class="w-full form-control form-input form-input-bordered"
-                        :class="{'border-danger': clientFieldHasError('redirect')}"
                     >
                     <div
                         v-show="clientFieldHasError('redirect')"
@@ -316,15 +356,15 @@
 
         <div class="card mt-3 overflow-hidden">
             <p
-                class="p-6 text-center text-gray-500"
                 v-show="clients.length === 0"
+                class="p-6 text-center text-gray-500"
             >
                 You have not yet created any OAuth clients.
             </p>
 
             <table
-                class="table w-full rounded"
                 v-show="clients.length > 0"
+                class="table w-full rounded"
             >
                 <thead>
                     <tr>
@@ -335,7 +375,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="client in clients">
+                    <tr
+                        v-for="client in clients"
+                        :key="'client-' + client.id"
+                    >
                         <td class="text-center">
                             {{ client.id }}
                         </td>
@@ -394,16 +437,21 @@
         >
             <div class="flex border-b border-40">
                 <div class="w-1/5 py-6 px-8">
-                    <label for="access-token-name" class="inline-block text-80 pt-2 leading-tight">Name</label>
+                    <label
+                        for="access-token-name"
+                        class="inline-block text-80 pt-2 leading-tight"
+                    >
+                        Name
+                    </label>
                 </div>
                 <div class="py-6 px-8 w-1/2">
                     <input
-                        v-model="tokenName"
                         id="access-token-name"
+                        :class="{'border-danger': tokenFieldHasError('name')}"
+                        v-model="tokenName"
                         type="text"
                         placeholder="Name"
                         class="w-full form-control form-input form-input-bordered"
-                        :class="{'border-danger': tokenFieldHasError('name')}"
                     >
                     <div
                         v-show="tokenFieldHasError('name')"
@@ -416,7 +464,12 @@
                 class="flex border-b border-40"
             >
                 <div class="w-1/5 py-6 px-8">
-                    <label for="token-scopes" class="inline-block text-80 pt-2 leading-tight">Scopes</label>
+                    <label
+                        for="token-scopes"
+                        class="inline-block text-80 pt-2 leading-tight"
+                    >
+                        Scopes
+                    </label>
                 </div>
                 <div class="py-6 px-8 w-1/2">
                     <multiselect
@@ -429,11 +482,11 @@
                         :clear-on-select="false"
                         :preserve-search="false"
                         :internal-search="false"
+                        :preselect-first="false"
+                        :class="{'border-danger': tokenFieldHasError('scopes')}"
                         placeholder="Select scopes..."
                         label="description"
                         track-by="id"
-                        :preselect-first="false"
-                        :class="{'border-danger': tokenFieldHasError('scopes')}"
                     ></multiselect>
                     <div
                         v-show="tokenFieldHasError('scopes')"
@@ -461,7 +514,10 @@
         >
             <div class="flex border-b border-40 remove-bottom-border">
                 <div class="w-1/5 py-6 px-8">
-                    <label for="accessToken" class="inline-block text-80 pt-2 leading-tight">
+                    <label
+                        for="accessToken"
+                        class="inline-block text-80 pt-2 leading-tight"
+                    >
                         New Access Token
                     </label>
                 </div>
@@ -495,8 +551,8 @@
             class="card mt-3"
         >
             <p
-                class="p-6 text-center text-gray-500"
                 v-show="accessTokens.length === 0"
+                class="p-6 text-center text-gray-500"
             >
                 You have not yet created any Access Tokens.
             </p>
@@ -505,7 +561,12 @@
                 class="relative"
             >
                 <div class="overflow-hidden overflow-x-auto relative rounded-lg">
-                    <table cellpadding="0" cellspacing="0" data-testid="resource-table" class="table w-full">
+                    <table
+                        cellpadding="0"
+                        cellspacing="0"
+                        data-testid="resource-table"
+                        class="table w-full"
+                    >
                         <thead>
                             <tr>
                                 <th class="text-center">Name</th>
@@ -519,9 +580,33 @@
                                 v-for="token in accessTokens"
                                 :key="token.id"
                             >
-                                <td><span class="whitespace-no-wrap text-left" via-resource="" via-resource-id="">{{ token.name }}</span></td>
-                                <td><span class="whitespace-no-wrap text-right" via-resource="" via-resource-id="">{{ token.expires_at }}</span></td>
-                                <td><span class="whitespace-no-wrap text-right" via-resource="" via-resource-id="">{{ token.scopes.join(", ") }}</span></td>
+                                <td>
+                                    <span
+                                        class="whitespace-no-wrap text-left"
+                                        via-resource=""
+                                        via-resource-id=""
+                                    >
+                                        {{ token.name }}                                        
+                                    </span>
+                                </td>
+                                <td>
+                                    <span
+                                        class="whitespace-no-wrap text-right"
+                                        via-resource=""
+                                        via-resource-id=""
+                                    >
+                                        {{ token.expires_at }}                                        
+                                    </span>
+                                </td>
+                                <td>
+                                    <span
+                                        class="whitespace-no-wrap text-right"
+                                        via-resource=""
+                                        via-resource-id=""
+                                    >
+                                        {{ token.scopes.join(", ") }}                                        
+                                    </span>
+                                </td>
                                 <td class="whitespace-no-wrap text-right">
                                     <a
                                         class="cursor-pointer text-danger"
