@@ -184,7 +184,7 @@
 
 <template>
     <div>
-        <h1>Paspport Manager</h1>
+        <h1>Passport Manager</h1>
         <h2 class="mt-8 text-90 font-normal text-2xl">Authorized Applications</h2>
         <div
             class="card mt-3"
