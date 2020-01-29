@@ -161,7 +161,7 @@
                         this.selectedScopes = Object.assign([]);
                         this.tokenErrors = Object.assign({});
                         this.accessToken = response.data.accessToken;
-                        this.tokens.push(response.data.token);
+                        this.accessTokens.push(response.data.token);
                     })
                     .catch(error => {
                         this.tokenErrors = ['Something went wrong. Please try again.'];
