@@ -22,13 +22,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Genealabs\\NovaPassportManager\\": "src/"
+            "GeneaLabs\\NovaPassportManager\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Genealabs\\NovaPassportManager\\Providers\\Service"
+                "GeneaLabs\\NovaPassportManager\\Providers\\Service"
             ]
         }
     },

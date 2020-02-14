@@ -1,8 +1,8 @@
 <?php
 
-namespace Genealabs\NovaPassportManager\Providers;
+namespace GeneaLabs\NovaPassportManager\Providers;
 
-use Genealabs\NovaPassportManager\Http\Middleware\Authorize;
+use GeneaLabs\NovaPassportManager\Http\Middleware\Authorize;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;

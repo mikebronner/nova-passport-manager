@@ -1,9 +1,9 @@
 <?php
 
-namespace Genealabs\NovaPassportManager\Http\Middleware;
+namespace GeneaLabs\NovaPassportManager\Http\Middleware;
 
 use Laravel\Nova\Nova;
-use Genealabs\NovaPassportManager\NovaPassportManager;
+use GeneaLabs\NovaPassportManager\NovaPassportManager;
 
 class Authorize
 {

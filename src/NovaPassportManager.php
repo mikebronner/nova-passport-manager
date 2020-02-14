@@ -1,6 +1,6 @@
 <?php
 
-namespace Genealabs\NovaPassportManager;
+namespace GeneaLabs\NovaPassportManager;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
