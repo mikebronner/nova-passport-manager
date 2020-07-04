@@ -15,7 +15,7 @@
     "require": {
         "laravel/framework": "^7.0",
         "laravel/nova": "^3.0",
-        "laravel/passport": "^8.0"
+        "laravel/passport": "^9.0"
     },
     "require-dev": {
         "symfony/thanks": "^1.0"
