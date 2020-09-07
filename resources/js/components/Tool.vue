@@ -248,7 +248,7 @@
                                 <td>
                                     <a
                                         class="action-link text-danger"
-                                        @click="revoke(token)"
+                                        @click="revokeAuthorizedToken(token)"
                                     >
                                         <svg
                                             class="fill-current h-3 w-3"
