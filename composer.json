@@ -14,7 +14,7 @@
     ],
     "require": {
         "laravel/framework": "^10.0",
-        "laravel/nova": "^3.9",
+        "laravel/nova": "^4.0",
         "laravel/passport": "*"
     },
     "require-dev": {
