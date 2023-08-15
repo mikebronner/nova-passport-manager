@@ -33,7 +33,8 @@ class NovaPassportManager extends Tool
     public function menu(Request $request)
     {
         return MenuSection::make('Passport Manager')
-            ->path('/passport-manager')
+            ->path('/nova-passport-manager')
             ->icon('server');
     }
+
 }

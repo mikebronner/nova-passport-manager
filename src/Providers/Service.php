@@ -3,6 +3,7 @@
 namespace GeneaLabs\NovaPassportManager\Providers;
 
 use GeneaLabs\NovaPassportManager\Http\Middleware\Authorize;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
@@ -38,6 +39,13 @@ class Service extends ServiceProvider
         if ($this->app->routesAreCached()) {
             return;
         }
+
+        Nova::router()
+            ->group(function ($router) {
+                $router->get('nova-passport-manager', function (Request $request) {
+                    return inertia('NovaPassportManager');
+                });
+            });
 
         Route::middleware(['nova', Authorize::class])
                 ->prefix('nova-vendor/nova-passport-manager')
