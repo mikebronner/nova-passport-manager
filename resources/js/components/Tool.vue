@@ -1,10 +1,7 @@
 <script>
-    import Multiselect from "vue-multiselect";
+    import axios from 'axios';
 
     export default {
-        components: {
-            "multiselect": Multiselect,
-        },
 
         data: function () {
             return {
@@ -471,22 +468,16 @@
                     </label>
                 </div>
                 <div class="py-6 px-8 w-1/2">
-                    <multiselect
+                    <select
                         id="token-scopes"
                         v-model="selectedScopes"
                         :options="scopes"
-                        :multiple="true"
-                        :hide-selected="true"
-                        :close-on-select="false"
-                        :clear-on-select="false"
-                        :preserve-search="false"
-                        :internal-search="false"
-                        :preselect-first="false"
+                        multiple="true"
                         :class="{'border-danger': tokenFieldHasError('scopes')}"
                         placeholder="Select scopes..."
                         label="description"
                         track-by="id"
-                    ></multiselect>
+                    ></select>
                     <div
                         v-show="tokenFieldHasError('scopes')"
                         class="help-text error-text mt-2 text-danger"
@@ -585,7 +576,7 @@
                                         via-resource=""
                                         via-resource-id=""
                                     >
-                                        {{ token.name }}                                        
+                                        {{ token.name }}
                                     </span>
                                 </td>
                                 <td>
@@ -594,7 +585,7 @@
                                         via-resource=""
                                         via-resource-id=""
                                     >
-                                        {{ token.expires_at }}                                        
+                                        {{ token.expires_at }}
                                     </span>
                                 </td>
                                 <td>
@@ -603,7 +594,7 @@
                                         via-resource=""
                                         via-resource-id=""
                                     >
-                                        {{ token.scopes.join(", ") }}                                        
+                                        {{ token.scopes.join(", ") }}
                                     </span>
                                 </td>
                                 <td class="whitespace-no-wrap text-right">
