@@ -2,6 +2,8 @@
 
 namespace GeneaLabs\NovaPassportManager;
 
+use Illuminate\Http\Request;
+use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
 
@@ -26,5 +28,12 @@ class NovaPassportManager extends Tool
     public function renderNavigation()
     {
         return view('nova-passport-manager::navigation');
+    }
+
+    public function menu(Request $request)
+    {
+        return MenuSection::make('Passport Manager')
+            ->path('/passport-manager')
+            ->icon('server');
     }
 }
