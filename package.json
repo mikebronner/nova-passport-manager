@@ -12,12 +12,18 @@
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.2.22",
+    "autoprefixer": "^10.4.16",
     "laravel-mix": "^6.0.41",
-    "postcss": "^8.3.11",
+    "postcss": "^8.4.33",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.69.7",
+    "sass-loader": "^12.6.0",
+    "tailwindcss": "^3.4.1",
     "vue-loader": "^16.8.3",
-    "vue-multiselect": "2.*"
+    "vue-multiselect": "^3.0.0-alpha.2"
   },
   "dependencies": {
-      "axios": "^1.4.0"
+    "axios": "^1.4.0",
+    "bootstrap": "^5.3.2"
   }
 }
