@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "laravel/framework": "^10.0|^11.0",
+        "laravel/framework": "^10.0|^11.0|^12.0",
         "laravel/nova": "^4.0",
         "laravel/passport": "*"
     },
